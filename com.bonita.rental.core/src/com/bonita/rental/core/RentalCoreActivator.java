@@ -12,7 +12,7 @@ public class RentalCoreActivator implements BundleActivator {
 
 	private static RentalAgency a = RentalAgencyGenerator.createSampleAgency();
 
-	static RentalAgency getAgency() {
+	public static RentalAgency getAgency() {
 		return a;
 	}
 
