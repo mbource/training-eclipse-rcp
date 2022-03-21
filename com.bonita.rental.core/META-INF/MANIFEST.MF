@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core
+Bundle-SymbolicName: com.bonita.rental.core
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.bonita.rental.core.RentalCoreActivator
+Bundle-Vendor: BONITA
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: com.bonita.rental.core
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,
+ lib/rental.jar
+Export-Package: com.bonita.rental.core,
+ com.opcoach.training.rental,
+ com.opcoach.training.rental.helpers
