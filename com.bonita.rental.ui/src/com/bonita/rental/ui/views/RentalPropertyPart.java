@@ -17,6 +17,11 @@ public class RentalPropertyPart {
 
 	private Label rentedCustomer;
 	private Label rentedItem;
+	private Group grpDates;
+	private Label startTitle;
+	private Label startValue;
+	private Label endTitle;
+	private Label endValue;
 
 	@Inject
 	public RentalPropertyPart() {
@@ -27,6 +32,7 @@ public class RentalPropertyPart {
 	public void postConstruct(Composite parent) {
 		parent.setLayout(new GridLayout(1, false));
 		Group infoGroup = new Group(parent, SWT.BORDER);
+		infoGroup.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1));
 		infoGroup.setText("Informations");
 		infoGroup.setLayout(new GridLayout(2, false));
 
@@ -37,7 +43,24 @@ public class RentalPropertyPart {
 		rentedItem.setLayoutData(gd);
 
 		rentedCustomer = new Label(infoGroup, SWT.BORDER);
-		rentedCustomer.setLayoutData(gd);
+		new Label(infoGroup, SWT.NONE);
+		
+		grpDates = new Group(parent, SWT.NONE);
+		grpDates.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
+		grpDates.setText("Dates");
+		grpDates.setLayout(new GridLayout(2, false));
+		
+		startTitle = new Label(grpDates, SWT.NONE);
+		startTitle.setText("New Label");
+		
+		startValue = new Label(grpDates, SWT.NONE);
+		startValue.setText("New Label");
+		
+		endTitle = new Label(grpDates, SWT.NONE);
+		endTitle.setText("New Label");
+		
+		endValue = new Label(grpDates, SWT.NONE);
+		endValue.setText("New Label");
 
 		setRental(RentalCoreActivator.getAgency().getRentals().get(0));
 	}
@@ -45,6 +68,7 @@ public class RentalPropertyPart {
 	public void setRental(Rental rental) {
 		rentedItem.setText(rental.getRentedObject().getName());
 		rentedCustomer.setText("Loué à :" + rental.getCustomer().getDisplayName());
+		startValue.setText(rental.getStartDate().toString());
+		endValue.setText(rental.getEndDate().toString());
 	}
-
 }
