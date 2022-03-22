@@ -4,6 +4,9 @@
     <elements xsi:type="basic:PartDescriptor" xmi:id="_5dxRkKkoEeyiiocOSdqK0g" elementId="com.bonita.rental.ui.partdescriptor.rentalProperty" label="Rental Property" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalPropertyPart">
       <tags>View</tags>
     </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_B9CDAKnQEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partdescriptor.agencyPart" label="Agency View" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.AgencyPart">
+      <tags>View</tags>
+    </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_TS94QKnJEeyy98GSDIIaaA" featurename="addons" parentElementId="xpath:/">
     <elements xsi:type="application:Addon" xmi:id="_Xn-wsKnJEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.addon.0" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalAddon"/>
