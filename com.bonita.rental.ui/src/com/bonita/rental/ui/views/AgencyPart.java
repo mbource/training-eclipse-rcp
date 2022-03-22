@@ -10,6 +10,10 @@ import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -21,6 +25,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.SWT;
 
 public class AgencyPart {
+
+	@Inject
+	private ESelectionService selectionService;
+
 	@Inject
 	public AgencyPart() {
 
@@ -35,11 +43,23 @@ public class AgencyPart {
 		TreeViewer tv = new TreeViewer(parent);
 		Tree tree = tv.getTree();
 		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
-		//Never forget to put RentalProvider in the context or else the injected objects he had will never be populated.
+		// Never forget to put RentalProvider in the context or else the injected
+		// objects he had will never be populated.
 		RentalProvider rentalProvider = ContextInjectionFactory.make(RentalProvider.class, context);
 		tv.setContentProvider(rentalProvider);
 		tv.setLabelProvider(rentalProvider);
 		tv.setInput(agencies);
+
+		tv.addSelectionChangedListener(new ISelectionChangedListener() {
+
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				IStructuredSelection sel = event.getStructuredSelection();
+
+				selectionService.setSelection(sel.size() == 1 ? sel.getFirstElement() : sel.toArray());
+
+			}
+		});
 
 	}
 
