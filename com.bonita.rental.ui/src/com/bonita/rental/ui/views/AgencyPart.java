@@ -32,7 +32,7 @@ public class AgencyPart {
 
 		TreeViewer tv = new TreeViewer(parent);
 		Tree tree = tv.getTree();
-		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		tv.setContentProvider(new RentalProvider());
 		tv.setLabelProvider(new RentalProvider());
 		tv.setInput(agencies);

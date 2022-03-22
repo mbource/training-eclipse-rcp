@@ -8,6 +8,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
+import com.opcoach.training.rental.RentalObject;
 
 public class RentalProvider extends LabelProvider implements ITreeContentProvider {
 
@@ -23,8 +24,17 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	public Object[] getChildren(Object parentElement) {
 		Object[] result = null;
 		if (parentElement instanceof RentalAgency) {
-			result = ((RentalAgency) parentElement).getCustomers().toArray();
+			Node resultCustomers = new Node(((RentalAgency) parentElement), "Customers");
+			Node resultLocations = new Node(((RentalAgency) parentElement), "Locations");
+			Node resultItems = new Node(((RentalAgency) parentElement), "Objets à louer");
+
+			result = List.of(resultCustomers, resultLocations, resultItems).toArray();
 		}
+
+		if (parentElement instanceof Node) {
+			result = ((Node) parentElement).getChildren();
+		}
+
 		return result;
 	}
 
@@ -37,7 +47,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Override
 	public boolean hasChildren(Object element) {
 		// TODO Auto-generated method stub
-		return element instanceof RentalAgency;
+		return element instanceof RentalAgency || element instanceof Node;
 	}
 
 	@Override
@@ -50,7 +60,57 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return ((Customer) element).getDisplayName();
 		}
 
-		return null;
+		if (element != null && element instanceof RentalObject) {
+			return ((RentalObject) element).getName();
+		}
+
+		if (element != null && element instanceof Node) {
+			return ((Node) element).getLabel();
+		}
+
+		return super.getText(element);
+	}
+
+	class Node {
+		private RentalAgency agency;
+		private String label;
+
+		public Node(RentalAgency agency, String label) {
+			this.agency = agency;
+			this.label = label;
+		}
+
+		public RentalAgency getAgency() {
+			return agency;
+		}
+
+		public void setAgency(RentalAgency agency) {
+			this.agency = agency;
+		}
+
+		public String getLabel() {
+			return label;
+		}
+
+		public void setLabel(String label) {
+			this.label = label;
+		}
+
+		public Object[] getChildren() {
+			if (label.equals("Customers")) {
+				return this.agency.getCustomers().toArray();
+			}
+
+			if (label.equals("Locations")) {
+				return this.agency.getRentals().toArray();
+			}
+
+			if (label.equals("Objets à louer")) {
+				return this.agency.getObjectsToRent().toArray();
+			}
+			return null;
+		}
+
 	}
 
 }
