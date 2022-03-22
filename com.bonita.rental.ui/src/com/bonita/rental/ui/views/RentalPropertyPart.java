@@ -10,8 +10,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 
-import com.bonita.rental.core.RentalCoreActivator;
 import com.opcoach.training.rental.Rental;
+import com.opcoach.training.rental.RentalAgency;
 
 public class RentalPropertyPart {
 
@@ -29,7 +29,7 @@ public class RentalPropertyPart {
 	}
 
 	@PostConstruct
-	public void postConstruct(Composite parent) {
+	public void postConstruct(Composite parent, RentalAgency rentalAgency) {
 		parent.setLayout(new GridLayout(1, false));
 		Group infoGroup = new Group(parent, SWT.BORDER);
 		infoGroup.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, true, false, 1, 1));
@@ -62,7 +62,7 @@ public class RentalPropertyPart {
 		endValue = new Label(grpDates, SWT.NONE);
 		endValue.setText("New Label");
 
-		setRental(RentalCoreActivator.getAgency().getRentals().get(0));
+		setRental(rentalAgency.getRentals().get(0));
 	}
 
 	public void setRental(Rental rental) {
