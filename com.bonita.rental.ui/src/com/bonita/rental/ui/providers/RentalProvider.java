@@ -3,19 +3,29 @@ package com.bonita.rental.ui.providers;
 import java.util.Collection;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
+import com.bonita.rental.ui.RentalUIConstants;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalObject;
 
 public class RentalProvider extends LabelProvider implements ITreeContentProvider, IColorProvider {
+
+	@Inject
+	@Named(RentalUIConstants.RENTAL_UI_IMG_REGISTRY)
+	private ImageRegistry registry;
 
 	@Override
 	public Color getForeground(Object element) {
@@ -37,6 +47,27 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Override
 	public Color getBackground(Object element) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Image getImage(Object element) {
+		if (element != null && element instanceof RentalObject) {
+			return registry.get(RentalUIConstants.IMG_RENTAL_OBJECT);
+		}
+
+		if (element != null && element instanceof Customer) {
+			return registry.get(RentalUIConstants.IMG_CUSTOMER);
+		}
+
+		if (element != null && element instanceof Rental) {
+			return registry.get(RentalUIConstants.IMG_RENTAL);
+		}
+
+		if (element != null && element instanceof RentalAgency) {
+			return registry.get(RentalUIConstants.IMG_AGENCY);
+		}
+
 		return null;
 	}
 
