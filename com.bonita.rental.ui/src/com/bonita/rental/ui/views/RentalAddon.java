@@ -27,6 +27,9 @@ public class RentalAddon implements RentalUIConstants {
 
 	@PostConstruct
 	public void applicationStarted(IEclipseContext context) {
+		// Here we put a sample Agency with a generator called from another bundle/plugin (com.bonita.rental.core)
+		// We can access this generator because the com.bonita.rental.core plugin has allowed us to use it with exported package in his manifest.
+		// We also need to add com.bonita.rental.core plugin in our required plugin of our own manifest.
 		context.set(RentalAgency.class, RentalAgencyGenerator.createSampleAgency());
 		context.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
 
