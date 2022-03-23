@@ -10,6 +10,7 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
@@ -21,7 +22,21 @@ import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalObject;
 
+/**
+ * RentalProvider contain providers for building a Tree
+ * ({@link ITreeContentProvider}) and using specific Colors
+ * ({@link IColorProvider}) and Label ({@link LabelProvider}) on that Tree. This
+ * class will be then used as a structure for a view/part using a widget JFace
+ * ({@link TreeViewer}).
+ * 
+ * @author mbource
+ *
+ */
 public class RentalProvider extends LabelProvider implements ITreeContentProvider, IColorProvider {
+
+	private static final String NODE_OBJETS_A_LOUER = RentalUIConstants.OBJECTS_NODE;
+	private static final String NODE_LOCATIONS = RentalUIConstants.RENTALS_NODE;
+	private static final String NODE_CUSTOMERS = RentalUIConstants.CUSTOMERS_NODE;
 
 	@Inject
 	@Named(RentalUIConstants.RENTAL_UI_IMG_REGISTRY)
@@ -52,16 +67,18 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Image getImage(Object element) {
-		if (element != null && element instanceof RentalObject) {
-			return registry.get(RentalUIConstants.IMG_RENTAL_OBJECT);
-		}
+		if (element != null && element instanceof Node) {
+			if (((Node) element).getLabel().equals(NODE_CUSTOMERS)) {
+				return registry.get(RentalUIConstants.IMG_CUSTOMER);
+			}
 
-		if (element != null && element instanceof Customer) {
-			return registry.get(RentalUIConstants.IMG_CUSTOMER);
-		}
+			if (((Node) element).getLabel().equals(NODE_LOCATIONS)) {
+				return registry.get(RentalUIConstants.IMG_RENTAL);
+			}
 
-		if (element != null && element instanceof Rental) {
-			return registry.get(RentalUIConstants.IMG_RENTAL);
+			if (((Node) element).getLabel().equals(NODE_OBJETS_A_LOUER)) {
+				return registry.get(RentalUIConstants.IMG_RENTAL_OBJECT);
+			}
 		}
 
 		if (element != null && element instanceof RentalAgency) {
@@ -74,7 +91,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Override
 	public Object[] getElements(Object inputElement) {
 		if (inputElement instanceof Collection<?>) {
-			return ((Collection) inputElement).toArray();
+			return ((Collection<?>) inputElement).toArray();
 		}
 		return null;
 	}
@@ -83,9 +100,9 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	public Object[] getChildren(Object parentElement) {
 		Object[] result = null;
 		if (parentElement instanceof RentalAgency) {
-			Node resultCustomers = new Node(((RentalAgency) parentElement), "Customers");
-			Node resultLocations = new Node(((RentalAgency) parentElement), "Locations");
-			Node resultItems = new Node(((RentalAgency) parentElement), "Objets à louer");
+			Node resultCustomers = new Node(((RentalAgency) parentElement), NODE_CUSTOMERS);
+			Node resultLocations = new Node(((RentalAgency) parentElement), NODE_LOCATIONS);
+			Node resultItems = new Node(((RentalAgency) parentElement), NODE_OBJETS_A_LOUER);
 
 			result = List.of(resultCustomers, resultLocations, resultItems).toArray();
 		}
@@ -99,13 +116,11 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public Object getParent(Object element) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean hasChildren(Object element) {
-		// TODO Auto-generated method stub
 		return element instanceof RentalAgency || element instanceof Node;
 	}
 
@@ -156,15 +171,15 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		}
 
 		public Object[] getChildren() {
-			if (label.equals("Customers")) {
+			if (label.equals(NODE_CUSTOMERS)) {
 				return this.agency.getCustomers().toArray();
 			}
 
-			if (label.equals("Locations")) {
+			if (label.equals(NODE_LOCATIONS)) {
 				return this.agency.getRentals().toArray();
 			}
 
-			if (label.equals("Objets à louer")) {
+			if (label.equals(NODE_OBJETS_A_LOUER)) {
 				return this.agency.getObjectsToRent().toArray();
 			}
 			return null;

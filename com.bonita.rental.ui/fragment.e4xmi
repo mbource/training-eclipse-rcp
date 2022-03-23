@@ -12,7 +12,7 @@
     <elements xsi:type="application:Addon" xmi:id="_Xn-wsKnJEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.addon.0" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalAddon"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_lp4PQKn3Eeyy98GSDIIaaA" featurename="snippets" parentElementId="xpath:/">
-    <elements xsi:type="advanced:Perspective" xmi:id="_qOC-AKn3Eeyy98GSDIIaaA" elementId="com.bonita.rental.ui.perspective.rentalperspective" selectedElement="_vfpagKn3Eeyy98GSDIIaaA" label="Rental Perspective">
+    <elements xsi:type="advanced:Perspective" xmi:id="_qOC-AKn3Eeyy98GSDIIaaA" elementId="com.bonita.rental.ui.perspective.rentalperspective" selectedElement="_vfpagKn3Eeyy98GSDIIaaA" label="Rental Perspective" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Agency.png">
       <children xsi:type="basic_1:PartSashContainer" xmi:id="_vfpagKn3Eeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partsashcontainer.0" selectedElement="_SDtPAKn5Eeyy98GSDIIaaA" horizontal="true">
         <children xsi:type="basic_1:PartStack" xmi:id="_SDtPAKn5Eeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partstack.2" selectedElement="_G0RXkKn4Eeyy98GSDIIaaA">
           <children xsi:type="advanced:Placeholder" xmi:id="_G0RXkKn4Eeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partdescriptor.agencyPart" closeable="true"/>

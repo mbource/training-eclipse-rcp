@@ -24,6 +24,13 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.SWT;
 
+/**
+ * Agency part : view displaying a tree containing Customers, rental and rented
+ * items.
+ * 
+ * @author mbource
+ *
+ */
 public class AgencyPart {
 
 	@Inject
@@ -43,6 +50,7 @@ public class AgencyPart {
 		TreeViewer tv = new TreeViewer(parent);
 		Tree tree = tv.getTree();
 		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
+
 		// Never forget to put RentalProvider in the context or else the injected
 		// objects he had will never be populated.
 		RentalProvider rentalProvider = ContextInjectionFactory.make(RentalProvider.class, context);
@@ -50,6 +58,12 @@ public class AgencyPart {
 		tv.setLabelProvider(rentalProvider);
 		tv.setInput(agencies);
 
+		/**
+		 * Each time a selection on the tree is done, this listener will call the
+		 * ESelectionService to send the data of the item selected into this service.
+		 * Then, other parts can get the content of this selection by subscribing to the
+		 * event selection.
+		 */
 		tv.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			@Override

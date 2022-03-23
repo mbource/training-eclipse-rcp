@@ -17,6 +17,13 @@ import org.eclipse.swt.widgets.Label;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 
+/**
+ * Rental property part : view displaying informations of an item rented by a
+ * customer.
+ * 
+ * @author mbource
+ *
+ */
 public class RentalPropertyPart {
 
 	private Label rentedCustomer;
@@ -78,9 +85,17 @@ public class RentalPropertyPart {
 		}
 	}
 
+	/**
+	 * This method with the Inject will allow us to get the service of Selection
+	 * events. Each time this service is being used, we retrieve the specific data
+	 * we want (the rental) from the tree.
+	 * 
+	 * @param rental
+	 */
 	@Inject
 	@Optional
 	public void receiveSelection(@Named(IServiceConstants.ACTIVE_SELECTION) Rental rental) {
+		// Displaying the result into our view.
 		setRental(rental);
 	}
 }
