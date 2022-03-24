@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_liVd4KkoEeyiiocOSdqK0g">
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmlns:ui="http://www.eclipse.org/ui/2010/UIModel/application/ui" xmi:id="_liVd4KkoEeyiiocOSdqK0g">
+  <imports xsi:type="commands:Command" xmi:id="_7EkHgKtdEeyLdo2RQ8A35g" elementId="org.eclipse.ui.edit.copy"/>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_pgRTEKkoEeyiiocOSdqK0g" featurename="descriptors" parentElementId="xpath:/">
     <elements xsi:type="basic:PartDescriptor" xmi:id="_5dxRkKkoEeyiiocOSdqK0g" elementId="com.bonita.rental.ui.partdescriptor.rentalProperty" label="Rental Property (Matthieu)" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Rentals.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalPropertyPart">
       <tags>View</tags>
     </elements>
     <elements xsi:type="basic:PartDescriptor" xmi:id="_B9CDAKnQEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partdescriptor.agencyPart" label="Agency View (Matthieu)" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Agency.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.AgencyPart">
       <tags>View</tags>
+      <handlers xmi:id="_-csg8KtdEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.handler.1" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.CopyHandler" command="_7EkHgKtdEeyLdo2RQ8A35g"/>
       <menus xmi:id="_rbYCkKtREeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.menu.hello" label="Hello">
         <tags>ViewMenu</tags>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_s3ScYKtQEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.handledmenuitem.hello" label="Hello!" command="_jgUicKtPEeyLdo2RQ8A35g"/>
       </menus>
       <menus xsi:type="menu:PopupMenu" xmi:id="_Ws5WcKtTEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.popupmenu.0">
         <children xsi:type="menu:DirectMenuItem" xmi:id="_fP5uwKtSEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directmenuitem.hello" label="Hello !!" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_jJ2lYKteEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.handledmenuitem.copycustomer" label="Copy Customer" command="_7EkHgKtdEeyLdo2RQ8A35g">
+          <visibleWhen xsi:type="ui:ImperativeExpression" xmi:id="_lXOb4KteEeyLdo2RQ8A35g" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.CopyHandler"/>
+        </children>
       </menus>
       <toolbar xmi:id="_1YeBAKtVEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.toolbar.0">
         <children xsi:type="menu:DirectToolItem" xmi:id="_2qfCgKtVEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directtoolitem.hello" label="Hello!" iconURI="platform:/plugin/com.bonita.rental.ui/icons/sample.gif" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
