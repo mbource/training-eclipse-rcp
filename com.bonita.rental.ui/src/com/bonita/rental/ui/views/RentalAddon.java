@@ -2,9 +2,12 @@
 package com.bonita.rental.ui.views;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -14,6 +17,7 @@ import org.osgi.framework.FrameworkUtil;
 
 import com.bonita.rental.ui.RentalUIConstants;
 import com.opcoach.e4.preferences.ScopedPreferenceStore;
+import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
 
@@ -31,18 +35,18 @@ public class RentalAddon implements RentalUIConstants {
 
 	@PostConstruct
 	public void applicationStarted(IEclipseContext context) {
-		// Here we put a sample Agency with a generator called from another bundle/plugin (com.bonita.rental.core)
-		// We can access this generator because the com.bonita.rental.core plugin has allowed us to use it with exported package in his manifest.
-		// We also need to add com.bonita.rental.core plugin in our required plugin of our own manifest.
+		// Here we put a sample Agency with a generator called from another
+		// bundle/plugin (com.bonita.rental.core)
+		// We can access this generator because the com.bonita.rental.core plugin has
+		// allowed us to use it with exported package in his manifest.
+		// We also need to add com.bonita.rental.core plugin in our required plugin of
+		// our own manifest.
 		context.set(RentalAgency.class, RentalAgencyGenerator.createSampleAgency());
 		context.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
 		context.set(RENTAL_UI_COLOR_REGISTRY, new ColorRegistry());
-		
+
 		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		context.set(RENTAL_UI_PREF_STORE, prefStore);
-		
-
-
 
 	}
 
@@ -60,6 +64,13 @@ public class RentalAddon implements RentalUIConstants {
 		reg.put(IMG_AGENCY, ImageDescriptor.createFromURL(b.getEntry(IMG_AGENCY)));
 
 		return reg;
+	}
+
+	@Inject
+	@Optional
+	public void reactOnCopyEvent(@UIEventTopic("rental/newCopy") Customer customerCopied) {
+		System.out.println("The customer " + customerCopied.getDisplayName() + " has been copied!");
+
 	}
 
 }
