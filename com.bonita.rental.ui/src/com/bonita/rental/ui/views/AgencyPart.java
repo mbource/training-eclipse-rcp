@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -42,7 +43,7 @@ public class AgencyPart {
 	}
 
 	@PostConstruct
-	public void postConstruct(Composite parent, RentalAgency agency, IEclipseContext context) {
+	public void postConstruct(Composite parent, RentalAgency agency, IEclipseContext context, EMenuService menuService) {
 		List<RentalAgency> agencies = new ArrayList<RentalAgency>();
 		agencies.add(agency);
 		parent.setLayout(new GridLayout(1, false));
@@ -74,6 +75,11 @@ public class AgencyPart {
 
 			}
 		});
+		
+		// Registering the popup menu to the menu service.
+		menuService.registerContextMenu(tv.getControl(), "com.bonita.rental.ui.popupmenu.0");
+		
+		
 
 	}
 

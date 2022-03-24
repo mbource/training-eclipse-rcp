@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
-<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_liVd4KkoEeyiiocOSdqK0g">
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_liVd4KkoEeyiiocOSdqK0g">
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_pgRTEKkoEeyiiocOSdqK0g" featurename="descriptors" parentElementId="xpath:/">
-    <elements xsi:type="basic:PartDescriptor" xmi:id="_5dxRkKkoEeyiiocOSdqK0g" elementId="com.bonita.rental.ui.partdescriptor.rentalProperty" label="Rental Property" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Rentals.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalPropertyPart">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_5dxRkKkoEeyiiocOSdqK0g" elementId="com.bonita.rental.ui.partdescriptor.rentalProperty" label="Rental Property (Matthieu)" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Rentals.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalPropertyPart">
       <tags>View</tags>
     </elements>
-    <elements xsi:type="basic:PartDescriptor" xmi:id="_B9CDAKnQEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partdescriptor.agencyPart" label="Agency View" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Agency.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.AgencyPart">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_B9CDAKnQEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.partdescriptor.agencyPart" label="Agency View (Matthieu)" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Agency.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.AgencyPart">
       <tags>View</tags>
+      <menus xmi:id="_rbYCkKtREeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.menu.hello" label="Hello">
+        <tags>ViewMenu</tags>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_s3ScYKtQEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.handledmenuitem.hello" label="Hello!" command="_jgUicKtPEeyLdo2RQ8A35g"/>
+      </menus>
+      <menus xsi:type="menu:PopupMenu" xmi:id="_Ws5WcKtTEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.popupmenu.0">
+        <children xsi:type="menu:DirectMenuItem" xmi:id="_fP5uwKtSEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directmenuitem.hello" label="Hello !!" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
+      </menus>
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_TS94QKnJEeyy98GSDIIaaA" featurename="addons" parentElementId="xpath:/">
@@ -26,6 +33,22 @@
           </children>
         </children>
       </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_fCZloKtPEeyLdo2RQ8A35g" featurename="commands" parentElementId="xpath:/">
+    <elements xsi:type="commands:Command" xmi:id="_jgUicKtPEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.messages.hello" commandName="Hello world"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_BW-CEKtQEeyLdo2RQ8A35g" featurename="handlers" parentElementId="xpath:/">
+    <elements xsi:type="commands:Handler" xmi:id="_GEh9YKtQEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.handler.0" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler" command="_jgUicKtPEeyLdo2RQ8A35g"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_JgRPAKtREeyLdo2RQ8A35g" featurename="menuContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:MenuContribution" xmi:id="_Maj14KtREeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.menucontribution.0" positionInParent="after=additions" parentId="org.eclipse.ui.main.menu">
+      <children xsi:type="menu:Menu" xmi:id="_DTzlYKtUEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.menu.rentalagency" label="Rental Agency">
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_Nn3WgKtREeyLdo2RQ8A35g" elementId="id.hello" label="Hello!" command="_jgUicKtPEeyLdo2RQ8A35g"/>
+      </children>
+    </elements>
+    <elements xsi:type="menu:MenuContribution" xmi:id="_XA8eYKtUEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.menucontribution.1" parentId="popup">
+      <children xsi:type="menu:DirectMenuItem" xmi:id="_Z82O0KtUEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directmenuitem.helloeveryone" label="Hello everyone!" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
     </elements>
   </fragments>
 </fragment:ModelFragments>
