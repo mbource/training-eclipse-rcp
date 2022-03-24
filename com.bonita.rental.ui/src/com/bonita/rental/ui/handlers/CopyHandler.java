@@ -1,20 +1,28 @@
 package com.bonita.rental.ui.handlers;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Evaluate;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.ImageTransfer;
 import org.eclipse.swt.dnd.RTFTransfer;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Display;
 
+import com.bonita.rental.ui.RentalUIConstants;
 import com.opcoach.training.rental.Customer;
 
 public class CopyHandler {
+
+	@Inject
+	@Named(RentalUIConstants.RENTAL_UI_IMG_REGISTRY)
+	private ImageRegistry registry;
 
 	@Execute
 	public void execute(@Named(IServiceConstants.ACTIVE_SELECTION) Customer customer) {
@@ -23,8 +31,11 @@ public class CopyHandler {
 		String rtfData = "{\\rtf1\\b\\i " + textData + "}";
 		TextTransfer textTransfer = TextTransfer.getInstance();
 		RTFTransfer rtfTransfer = RTFTransfer.getInstance();
-		Transfer[] transfers = new Transfer[] { textTransfer, rtfTransfer };
-		Object[] data = new Object[] { textData, rtfData };
+		ImageTransfer imageTransfer = ImageTransfer.getInstance();
+
+		Transfer[] transfers = new Transfer[] { textTransfer, rtfTransfer, imageTransfer };
+		// Image will be only displayed with the right software (Word) with "paste as image..."
+		Object[] data = new Object[] { textData, rtfData, registry.get(RentalUIConstants.IMG_AGENCY).getImageData() };
 		clipboard.setContents(data, transfers);
 		clipboard.dispose();
 	}
