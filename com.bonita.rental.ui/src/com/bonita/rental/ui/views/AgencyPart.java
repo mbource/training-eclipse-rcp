@@ -10,6 +10,8 @@ import javax.annotation.PostConstruct;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -19,6 +21,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
+import com.bonita.rental.ui.RentalUIConstants;
 import com.bonita.rental.ui.providers.RentalProvider;
 import com.opcoach.training.rental.RentalAgency;
 import org.eclipse.swt.widgets.Tree;
@@ -36,6 +39,7 @@ public class AgencyPart {
 
 	@Inject
 	private ESelectionService selectionService;
+	private TreeViewer tv;
 
 	@Inject
 	public AgencyPart() {
@@ -43,12 +47,13 @@ public class AgencyPart {
 	}
 
 	@PostConstruct
-	public void postConstruct(Composite parent, RentalAgency agency, IEclipseContext context, EMenuService menuService) {
+	public void postConstruct(Composite parent, RentalAgency agency, IEclipseContext context,
+			EMenuService menuService) {
 		List<RentalAgency> agencies = new ArrayList<RentalAgency>();
 		agencies.add(agency);
 		parent.setLayout(new GridLayout(1, false));
 
-		TreeViewer tv = new TreeViewer(parent);
+		tv = new TreeViewer(parent);
 		Tree tree = tv.getTree();
 		tree.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 
@@ -75,11 +80,26 @@ public class AgencyPart {
 
 			}
 		});
-		
+
 		// Registering the popup menu to the menu service.
 		menuService.registerContextMenu(tv.getControl(), "com.bonita.rental.ui.popupmenu.0");
-		
-		
+
+	}
+
+	/**
+	 . Method use to refresh the colors of the tree when preferences are changed.
+	 * @param customerColor
+	 * @param rentalColor
+	 * @param rentalObjectColor
+	 */
+	@Inject
+	@Optional
+	public void manageColors(@Preference(value = RentalUIConstants.PREF_CUSTOMER_COLOR) String customerColor,
+			@Preference(value = RentalUIConstants.PREF_RENTAL_COLOR) String rentalColor,
+			@Preference(value = RentalUIConstants.PREF_RENTAL_OBJECT_COLOR) String rentalObjectColor) {
+		if (this.tv != null && !tv.getControl().isDisposed()) {
+			tv.refresh();
+		}
 
 	}
 

@@ -2,6 +2,7 @@ package com.bonita.rental.ui.providers;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,10 +15,8 @@ import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
 import com.bonita.rental.ui.RentalUIConstants;
 import com.opcoach.training.rental.Customer;
@@ -208,6 +207,33 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 				return this.agency.getObjectsToRent().toArray();
 			}
 			return null;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getEnclosingInstance().hashCode();
+			result = prime * result + Objects.hash(agency, label);
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Node other = (Node) obj;
+			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
+				return false;
+			return Objects.equals(agency, other.agency) && Objects.equals(label, other.label);
+		}
+
+		private RentalProvider getEnclosingInstance() {
+			return RentalProvider.this;
 		}
 
 	}
