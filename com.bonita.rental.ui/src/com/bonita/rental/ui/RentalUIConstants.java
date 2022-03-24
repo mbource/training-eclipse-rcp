@@ -11,6 +11,7 @@ public interface RentalUIConstants
 	public static final String PLUGIN_ID = "com.bonita.rental.ui";
 	public static final String RENTAL_UI_PREF_STORE = PLUGIN_ID + ".preferenceStore";
 	public static final String RENTAL_UI_IMG_REGISTRY = PLUGIN_ID + ".imageRegistry";
+	public static final String RENTAL_UI_COLOR_REGISTRY = PLUGIN_ID + ".colorRegistry";
 	
 	// The perspective ID as define in the snippet fragment.
 	public static final String RENTAL_UI_PERSPECTIVE = PLUGIN_ID + ".perspective";

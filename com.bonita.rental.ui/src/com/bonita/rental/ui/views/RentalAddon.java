@@ -3,13 +3,17 @@ package com.bonita.rental.ui.views;
 
 import javax.annotation.PostConstruct;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
 import com.bonita.rental.ui.RentalUIConstants;
+import com.opcoach.e4.preferences.ScopedPreferenceStore;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
 
@@ -32,6 +36,13 @@ public class RentalAddon implements RentalUIConstants {
 		// We also need to add com.bonita.rental.core plugin in our required plugin of our own manifest.
 		context.set(RentalAgency.class, RentalAgencyGenerator.createSampleAgency());
 		context.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
+		context.set(RENTAL_UI_COLOR_REGISTRY, new ColorRegistry());
+		
+		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
+		context.set(RENTAL_UI_PREF_STORE, prefStore);
+		
+
+
 
 	}
 

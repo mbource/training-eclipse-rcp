@@ -6,7 +6,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -42,21 +45,43 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Named(RentalUIConstants.RENTAL_UI_IMG_REGISTRY)
 	private ImageRegistry registry;
 
+	@Inject
+	@Named(RentalUIConstants.RENTAL_UI_COLOR_REGISTRY)
+	private ColorRegistry colorRegistry;
+
+	@Inject
+	@Named(RentalUIConstants.RENTAL_UI_PREF_STORE)
+	private IPreferenceStore prefStore;
+
 	@Override
 	public Color getForeground(Object element) {
 		if (element != null && element instanceof RentalObject) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_BLUE);
+			return getPrefColor(RentalUIConstants.PREF_RENTAL_OBJECT_COLOR);
 		}
 
 		if (element != null && element instanceof Customer) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+			return getPrefColor(RentalUIConstants.PREF_CUSTOMER_COLOR);
 		}
 
 		if (element != null && element instanceof Rental) {
-			return Display.getCurrent().getSystemColor(SWT.COLOR_GREEN);
+			return getPrefColor(RentalUIConstants.PREF_RENTAL_COLOR);
 		}
 
 		return null;
+	}
+
+	private Color getPrefColor(String key) {
+		String rgbKey = prefStore.getString(key);
+
+		Color result = colorRegistry.get(rgbKey);
+		if (result == null) {
+			// Get value in pref store
+			colorRegistry.put(rgbKey, StringConverter.asRGB(rgbKey));
+			result = colorRegistry.get(rgbKey);
+		}
+
+		return result;
+
 	}
 
 	@Override
