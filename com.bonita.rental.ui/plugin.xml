@@ -15,5 +15,15 @@
             class="com.bonita.rental.ui.prefs.RentalInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="com.opcoach.training.rental.Rental"
+            class="com.bonita.rental.adapters.RentalToCustomerAdapterFactory">
+         <adapter
+               type="com.opcoach.training.rental.Customer">
+         </adapter>
+      </factory>
+   </extension>
 
 </plugin>

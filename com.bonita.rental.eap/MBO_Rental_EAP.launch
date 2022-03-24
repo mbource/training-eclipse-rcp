@@ -173,6 +173,7 @@
         <setEntry value="org.w3c.dom.svg@default:default"/>
     </setAttribute>
     <setAttribute key="selected_workspace_bundles">
+        <setEntry value="com.bonita.rental.adapters@default:default"/>
         <setEntry value="com.bonita.rental.core@default:default"/>
         <setEntry value="com.bonita.rental.eap@default:default"/>
         <setEntry value="com.bonita.rental.rcp@default:default"/>
