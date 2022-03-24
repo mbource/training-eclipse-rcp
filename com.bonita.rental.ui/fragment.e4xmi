@@ -13,6 +13,9 @@
       <menus xsi:type="menu:PopupMenu" xmi:id="_Ws5WcKtTEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.popupmenu.0">
         <children xsi:type="menu:DirectMenuItem" xmi:id="_fP5uwKtSEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directmenuitem.hello" label="Hello !!" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
       </menus>
+      <toolbar xmi:id="_1YeBAKtVEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.toolbar.0">
+        <children xsi:type="menu:DirectToolItem" xmi:id="_2qfCgKtVEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directtoolitem.hello" label="Hello!" iconURI="platform:/plugin/com.bonita.rental.ui/icons/sample.gif" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
+      </toolbar>
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_TS94QKnJEeyy98GSDIIaaA" featurename="addons" parentElementId="xpath:/">
@@ -49,6 +52,18 @@
     </elements>
     <elements xsi:type="menu:MenuContribution" xmi:id="_XA8eYKtUEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.menucontribution.1" parentId="popup">
       <children xsi:type="menu:DirectMenuItem" xmi:id="_Z82O0KtUEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directmenuitem.helloeveryone" label="Hello everyone!" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_CDVKEKtWEeyLdo2RQ8A35g" featurename="trimContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:TrimContribution" xmi:id="_EwdCMKtXEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.trimcontribution.0" parentId="org.eclipse.ui.main.toolbar" positionInParent="after=additions">
+      <children xsi:type="menu:ToolBar" xmi:id="_GZCwoKtXEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.toolbar.1">
+        <children xsi:type="menu:DirectToolItem" xmi:id="_F_0NwKtWEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.directtoolitem.hello1" label="Hello!" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Agency.png" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.handlers.HelloHandler"/>
+      </children>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_gMs78KtXEeyLdo2RQ8A35g" featurename="toolBarContributions" parentElementId="xpath:/">
+    <elements xsi:type="menu:ToolBarContribution" xmi:id="_iexsQKtXEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.toolbarcontribution.0" parentId="org.eclipse.debug.ui.launchActionSet" positionInParent="after=additions">
+      <children xsi:type="menu:HandledToolItem" xmi:id="_jM7LsKtXEeyLdo2RQ8A35g" elementId="com.bonita.rental.ui.handledtoolitem.0" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Rentals.png" command="_jgUicKtPEeyLdo2RQ8A35g"/>
     </elements>
   </fragments>
 </fragment:ModelFragments>
