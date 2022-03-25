@@ -1,0 +1,13 @@
+Tree {
+  /* actual values */
+  background-color: #ffffff #000000 100%;
+  background-image: none;
+  color: #000000;
+  font-family: "Segoe UI";	/* declared in CSS: #org-eclipse-ui-workbench-TREE_TABLE_FONT */
+  font-size: 12;
+  font-style: normal;
+  font-weight: normal;
+  swt-lines-visible: false;
+  text-transform: none;
+  visibility: visible;
+}
