@@ -4,6 +4,10 @@ package com.bonita.rental.ui.views;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
@@ -73,4 +77,29 @@ public class RentalAddon implements RentalUIConstants {
 
 	}
 
+	/**
+	 * Display all the fragments and processors from the extensionpoint
+	 * org.eclipse.e4.workbench.model.
+	 * 
+	 * @param reg The {@link IExtensionRegistry} injected to get.
+	 */
+	@Inject
+	public void getExtensions(IExtensionRegistry reg) {
+		IExtensionPoint extp = reg.getExtensionPoint("org.eclipse.e4.workbench.model");
+		IExtension[] extensions = extp.getExtensions();
+
+		for (IExtension ext : extensions) {
+			for (IConfigurationElement config : ext.getConfigurationElements()) {
+				if (config.getAttribute("uri") != null) {
+					System.out.println("Model fragment " + config.getAttribute("uri") + " found in "
+							+ config.getNamespaceIdentifier());
+				}
+				if (config.getAttribute("class") != null) {
+					System.out.println("Model processor " + config.getAttribute("class") + " found in "
+							+ config.getNamespaceIdentifier());
+				}
+
+			}
+		}
+	}
 }
