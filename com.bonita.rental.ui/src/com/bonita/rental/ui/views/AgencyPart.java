@@ -2,11 +2,9 @@
 package com.bonita.rental.ui.views;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -14,6 +12,7 @@ import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.di.extensions.Preference;
+import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.e4.ui.services.EMenuService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -23,7 +22,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
-import com.bonita.rental.ui.Palette;
 import com.bonita.rental.ui.RentalUIConstants;
 import com.bonita.rental.ui.providers.RentalProvider;
 import com.opcoach.training.rental.RentalAgency;
@@ -109,11 +107,8 @@ public class AgencyPart {
 
 	@Inject
 	@Optional
-	public void onPrefPaletteChanged(@Preference(value = RentalUIConstants.PREF_PALETTE) String prefId,
-			@Named(RentalUIConstants.PALETTE_MANAGER) Map<String, Palette> map, IEclipseContext context) {
-		context.set(Palette.class, map.get(prefId));
-
-		if (this.tv != null && !tv.getControl().isDisposed()) {
+	public void reactOnPaletteChanged(@UIEventTopic("rental/refresh") boolean isRefresh) {
+		if (isRefresh) {
 			tv.refresh();
 		}
 

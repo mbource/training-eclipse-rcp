@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -16,6 +17,8 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.eclipse.e4.core.di.extensions.Preference;
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.UIEventTopic;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ColorRegistry;
@@ -104,6 +107,16 @@ public class RentalAddon implements RentalUIConstants {
 		System.out.println("The customer " + customerCopied.getDisplayName() + " has been copied!");
 
 	}
+	
+	@Inject
+	@Optional
+	public void onPrefPaletteChanged(@Preference(value = RentalUIConstants.PREF_PALETTE) String prefId,
+			@Named(RentalUIConstants.PALETTE_MANAGER) Map<String, Palette> map, IEclipseContext context, IEventBroker broker) {
+		context.set(Palette.class, map.get(prefId));
+		// Sending the copy event to the e4 event bus.
+		broker.send("rental/refresh", true);
+	}
+
 
 	/**
 	 * Display all the fragments and processors from the extensionpoint
