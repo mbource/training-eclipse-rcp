@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='com.bonita.rental.feature.feature.jar' version='1.0.0.202203251530'>
+    <properties size='7'>
+      <property name='org.eclipse.equinox.p2.name' value='Feature'/>
+      <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+      <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      <property name='org.eclipse.equinox.p2.provider' value='BONITA'/>
+      <property name='maven-groupId' value='com.bonita.rental'/>
+      <property name='maven-artifactId' value='com.bonita.rental.feature'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='3'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.feature.feature.jar' version='1.0.0.202203251530'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+      <provided namespace='org.eclipse.update.feature' name='com.bonita.rental.feature' version='1.0.0.202203251530'/>
+    </provides>
+    <filter>
+      (org.eclipse.update.install.features=true)
+    </filter>
+    <artifacts size='1'>
+      <artifact classifier='org.eclipse.update.feature' id='com.bonita.rental.feature' version='1.0.0.202203251530'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='zipped'>
+          true
+        </instruction>
+      </instructions>
+    </touchpointData>
+    <licenses size='1'>
+      <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+        [Enter License Description here.]
+      </license>
+    </licenses>
+    <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+      [Enter Copyright Description here.]
+    </copyright>
+  </unit>
+  <unit id='com.bonita.rental.feature.feature.group' version='1.0.0.202203251530' singleton='false'>
+    <update id='com.bonita.rental.feature.feature.group' range='[0.0.0,1.0.0.202203251530)' severity='0'/>
+    <properties size='8'>
+      <property name='org.eclipse.equinox.p2.name' value='Feature'/>
+      <property name='org.eclipse.equinox.p2.description' value='[Enter Feature Description here.]'/>
+      <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      <property name='org.eclipse.equinox.p2.provider' value='BONITA'/>
+      <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      <property name='maven-groupId' value='com.bonita.rental'/>
+      <property name='maven-artifactId' value='com.bonita.rental.feature'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.feature.feature.group' version='1.0.0.202203251530'/>
+    </provides>
+    <requires size='30'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.inject' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.swt' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.model.workbench' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.services' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.workbench' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.core.di' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.di' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.core.contexts' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.ui' range='1.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.core' range='1.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.osgi.services' range='3.10.200'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.annotation' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface' range='3.25.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.model.workbench' range='2.2.0.v20210727-1533'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.common' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.core.services' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.core.contexts' range='1.9.100'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.core.di' range='1.8.100'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.services' range='1.5.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.ui.workbench' range='1.13.100'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.opcoach.e4.preferences' range='1.3.1'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.e4.core.di.extensions' range='0.17.100'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.emf.ecore' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.adapters' range='[1.0.0.202203251530,1.0.0.202203251530]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.eap' range='[1.0.0.202203251530,1.0.0.202203251530]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.ui' range='[1.0.0.202203251530,1.0.0.202203251530]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.core' range='[1.0.0.202203251530,1.0.0.202203251530]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.bonita.rental.feature.feature.jar' range='[1.0.0.202203251530,1.0.0.202203251530]'>
+        <filter>
+          (org.eclipse.update.install.features=true)
+        </filter>
+      </required>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+    <licenses size='1'>
+      <license uri='http://www.example.com/license' url='http://www.example.com/license'>
+        [Enter License Description here.]
+      </license>
+    </licenses>
+    <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+      [Enter Copyright Description here.]
+    </copyright>
+  </unit>
+</units>
