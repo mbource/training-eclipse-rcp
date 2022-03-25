@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.bonita.rental.feature_1.0.0.202203251458.jar" id="com.bonita.rental.feature" version="1.0.0.202203251458">
+      <category name="com.bonita.rental"/>
+   </feature>
+   <category-def name="com.bonita.rental" label="Rental">
+      <description>
+         Rental component
+      </description>
+   </category-def>
+</site>

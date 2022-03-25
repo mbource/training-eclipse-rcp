@@ -31,17 +31,11 @@
     <stringAttribute key="pde.version" value="3.3"/>
     <stringAttribute key="product" value="com.bonita.rental.eap.product"/>
     <setAttribute key="selected_target_bundles">
-        <setEntry value="biz.aQute.bnd.util@default:default"/>
-        <setEntry value="biz.aQute.bndlib@default:default"/>
-        <setEntry value="ch.qos.logback.classic@default:default"/>
-        <setEntry value="ch.qos.logback.core@default:default"/>
-        <setEntry value="ch.qos.logback.slf4j@default:false"/>
-        <setEntry value="com.google.guava*30.1.0.v20210127-2300@default:default"/>
         <setEntry value="com.ibm.icu@default:default"/>
         <setEntry value="com.opcoach.e4.preferences.mainmenu@default:default"/>
         <setEntry value="com.opcoach.e4.preferences@default:default"/>
-        <setEntry value="com.sun.jna*5.8.0.v20210503-0343@default:default"/>
-        <setEntry value="com.sun.jna.platform*5.8.0.v20210406-1004@default:default"/>
+        <setEntry value="com.sun.jna.platform@default:default"/>
+        <setEntry value="com.sun.jna@default:default"/>
         <setEntry value="jakarta.servlet-api@default:default"/>
         <setEntry value="javax.annotation@default:default"/>
         <setEntry value="javax.inject@default:default"/>
@@ -57,9 +51,6 @@
         <setEntry value="org.apache.felix.gogo.runtime@default:default"/>
         <setEntry value="org.apache.felix.gogo.shell@default:default"/>
         <setEntry value="org.apache.felix.scr@1:true"/>
-        <setEntry value="org.apache.log4j@default:default"/>
-        <setEntry value="org.apache.xerces@default:default"/>
-        <setEntry value="org.apache.xml.resolver@default:default"/>
         <setEntry value="org.apache.xmlgraphics@default:default"/>
         <setEntry value="org.bouncycastle.bcpg@default:default"/>
         <setEntry value="org.bouncycastle.bcprov@default:default"/>
@@ -115,7 +106,6 @@
         <setEntry value="org.eclipse.emf.databinding.edit@default:default"/>
         <setEntry value="org.eclipse.emf.databinding@default:default"/>
         <setEntry value="org.eclipse.emf.ecore.change@default:default"/>
-        <setEntry value="org.eclipse.emf.ecore.edit@default:default"/>
         <setEntry value="org.eclipse.emf.ecore.xmi@default:default"/>
         <setEntry value="org.eclipse.emf.ecore@default:default"/>
         <setEntry value="org.eclipse.emf.edit@default:default"/>
@@ -155,21 +145,11 @@
         <setEntry value="org.eclipse.jdt.debug@default:default"/>
         <setEntry value="org.eclipse.jdt.launching@default:default"/>
         <setEntry value="org.eclipse.jdt.ui@default:default"/>
-        <setEntry value="org.eclipse.jem.util@default:default"/>
         <setEntry value="org.eclipse.jface.databinding@default:default"/>
         <setEntry value="org.eclipse.jface.text@default:default"/>
         <setEntry value="org.eclipse.jface@default:default"/>
         <setEntry value="org.eclipse.ltk.core.refactoring@default:default"/>
         <setEntry value="org.eclipse.ltk.ui.refactoring@default:default"/>
-        <setEntry value="org.eclipse.m2e.archetype.common@default:default"/>
-        <setEntry value="org.eclipse.m2e.core.ui@default:default"/>
-        <setEntry value="org.eclipse.m2e.core@default:default"/>
-        <setEntry value="org.eclipse.m2e.logback.appender@default:false"/>
-        <setEntry value="org.eclipse.m2e.maven.indexer@default:default"/>
-        <setEntry value="org.eclipse.m2e.maven.runtime.slf4j.simple@default:default"/>
-        <setEntry value="org.eclipse.m2e.maven.runtime@default:default"/>
-        <setEntry value="org.eclipse.m2e.model.edit@default:default"/>
-        <setEntry value="org.eclipse.m2e.workspace.cli@default:default"/>
         <setEntry value="org.eclipse.osgi.compatibility.state@default:false"/>
         <setEntry value="org.eclipse.osgi.services@default:default"/>
         <setEntry value="org.eclipse.osgi.util@default:default"/>
@@ -202,16 +182,6 @@
         <setEntry value="org.eclipse.ui.workbench@default:default"/>
         <setEntry value="org.eclipse.ui@default:default"/>
         <setEntry value="org.eclipse.urischeme@default:default"/>
-        <setEntry value="org.eclipse.wst.common.core@default:default"/>
-        <setEntry value="org.eclipse.wst.common.emf@default:default"/>
-        <setEntry value="org.eclipse.wst.common.emfworkbench.integration@default:default"/>
-        <setEntry value="org.eclipse.wst.common.environment@default:default"/>
-        <setEntry value="org.eclipse.wst.common.frameworks@default:default"/>
-        <setEntry value="org.eclipse.wst.common.project.facet.core@default:default"/>
-        <setEntry value="org.eclipse.wst.common.uriresolver@default:default"/>
-        <setEntry value="org.eclipse.wst.sse.core@default:default"/>
-        <setEntry value="org.eclipse.wst.validation@default:default"/>
-        <setEntry value="org.eclipse.wst.xml.core@default:default"/>
         <setEntry value="org.sat4j.core@default:default"/>
         <setEntry value="org.sat4j.pb@default:default"/>
         <setEntry value="org.slf4j.api@default:default"/>
