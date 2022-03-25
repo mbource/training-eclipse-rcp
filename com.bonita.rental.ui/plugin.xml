@@ -5,9 +5,15 @@
    <extension
          point="com.opcoach.e4.preferences.e4PreferencePages">
       <page
+            category="com.bonita.rental.ui.pagePalette"
             class="com.bonita.rental.ui.prefs.RentalColorPreferencePage"
             id="com.bonita.rental.ui.pagecolor"
-            name="Colors">
+            name="Default Colors">
+      </page>
+      <page
+            class="com.bonita.rental.ui.prefs.RentalPalettePreferences"
+            id="com.bonita.rental.ui.pagePalette"
+            name="Palettes">
       </page>
    </extension>
    <extension
