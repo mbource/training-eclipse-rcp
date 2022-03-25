@@ -1,5 +1,8 @@
 
-package com.bonita.rental.ui.views;
+package com.bonita.rental.ui;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -8,7 +11,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.ui.di.UIEventTopic;
@@ -16,10 +21,10 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ColorRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.viewers.IColorProvider;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
-import com.bonita.rental.ui.RentalUIConstants;
 import com.opcoach.e4.preferences.ScopedPreferenceStore;
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
@@ -38,7 +43,7 @@ import com.opcoach.training.rental.helpers.RentalAgencyGenerator;
 public class RentalAddon implements RentalUIConstants {
 
 	@PostConstruct
-	public void applicationStarted(IEclipseContext context) {
+	public void applicationStarted(IEclipseContext context, IExtensionRegistry reg) {
 		// Here we put a sample Agency with a generator called from another
 		// bundle/plugin (com.bonita.rental.core)
 		// We can access this generator because the com.bonita.rental.core plugin has
@@ -48,10 +53,31 @@ public class RentalAddon implements RentalUIConstants {
 		context.set(RentalAgency.class, RentalAgencyGenerator.createSampleAgency());
 		context.set(RENTAL_UI_IMG_REGISTRY, getLocalImageRegistry());
 		context.set(RENTAL_UI_COLOR_REGISTRY, new ColorRegistry());
-
 		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		context.set(RENTAL_UI_PREF_STORE, prefStore);
+		context.set(PALETTE_MANAGER, getPalettes(reg, context));
 
+
+
+	}
+
+	private Map<String, Palette> getPalettes(IExtensionRegistry reg, IEclipseContext context) {
+
+		Map<String, Palette> paletteManager = new HashMap<>();
+		try {
+			for (IConfigurationElement element : reg.getConfigurationElementsFor("com.bonita.rental.ui.palette")) {
+				Bundle b = Platform.getBundle(element.getNamespaceIdentifier());
+				Class<?> clazz = b.loadClass(element.getAttribute("paletteClass"));
+
+				paletteManager.put(element.getAttribute("id"), new Palette(element.getAttribute("id"),
+						element.getAttribute("name"), (IColorProvider) ContextInjectionFactory.make(clazz, context)));
+				System.out.println(paletteManager.get(element.getAttribute("id")));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return paletteManager;
 	}
 
 	private ImageRegistry getLocalImageRegistry() {

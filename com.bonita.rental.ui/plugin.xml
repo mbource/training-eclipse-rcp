@@ -33,6 +33,11 @@
             name="Default Palette"
             paletteClass="com.bonita.rental.ui.palette.DefaultPalette">
       </palette>
+      <palette
+            id="com.bonita.rental.ui.palette2"
+            name="Ugly Palette"
+            paletteClass="com.bonita.rental.ui.palette.UglyPalette">
+      </palette>
    </extension>
 
 </plugin>

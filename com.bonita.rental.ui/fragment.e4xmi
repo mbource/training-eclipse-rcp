@@ -27,7 +27,7 @@
     </elements>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_TS94QKnJEeyy98GSDIIaaA" featurename="addons" parentElementId="xpath:/">
-    <elements xsi:type="application:Addon" xmi:id="_Xn-wsKnJEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.addon.0" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.views.RentalAddon"/>
+    <elements xsi:type="application:Addon" xmi:id="_Xn-wsKnJEeyy98GSDIIaaA" elementId="com.bonita.rental.ui.addon.0" contributionURI="bundleclass://com.bonita.rental.ui/com.bonita.rental.ui.RentalAddon"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_lp4PQKn3Eeyy98GSDIIaaA" featurename="snippets" parentElementId="xpath:/">
     <elements xsi:type="advanced:Perspective" xmi:id="_qOC-AKn3Eeyy98GSDIIaaA" elementId="com.bonita.rental.ui.perspective" selectedElement="_vfpagKn3Eeyy98GSDIIaaA" label="Rental Perspective" iconURI="platform:/plugin/com.bonita.rental.ui/icons/Agency.png">
