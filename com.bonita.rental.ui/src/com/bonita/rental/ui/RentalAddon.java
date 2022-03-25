@@ -55,7 +55,9 @@ public class RentalAddon implements RentalUIConstants {
 		context.set(RENTAL_UI_COLOR_REGISTRY, new ColorRegistry());
 		IPreferenceStore prefStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, PLUGIN_ID);
 		context.set(RENTAL_UI_PREF_STORE, prefStore);
-		context.set(PALETTE_MANAGER, getPalettes(reg, context));
+		Map<String, Palette> palettes = getPalettes(reg, context);
+		context.set(PALETTE_MANAGER, palettes);
+		context.set(Palette.class, palettes.get(DEFAULT_PALETTE));
 
 
 

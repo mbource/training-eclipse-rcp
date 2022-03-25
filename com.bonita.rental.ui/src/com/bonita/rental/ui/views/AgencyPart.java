@@ -2,9 +2,11 @@
 package com.bonita.rental.ui.views;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -21,6 +23,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 
+import com.bonita.rental.ui.Palette;
 import com.bonita.rental.ui.RentalUIConstants;
 import com.bonita.rental.ui.providers.RentalProvider;
 import com.opcoach.training.rental.RentalAgency;
@@ -87,7 +90,8 @@ public class AgencyPart {
 	}
 
 	/**
-	 . Method use to refresh the colors of the tree when preferences are changed.
+	 * . Method use to refresh the colors of the tree when preferences are changed.
+	 * 
 	 * @param customerColor
 	 * @param rentalColor
 	 * @param rentalObjectColor
@@ -97,6 +101,18 @@ public class AgencyPart {
 	public void manageColors(@Preference(value = RentalUIConstants.PREF_CUSTOMER_COLOR) String customerColor,
 			@Preference(value = RentalUIConstants.PREF_RENTAL_COLOR) String rentalColor,
 			@Preference(value = RentalUIConstants.PREF_RENTAL_OBJECT_COLOR) String rentalObjectColor) {
+		if (this.tv != null && !tv.getControl().isDisposed()) {
+			tv.refresh();
+		}
+
+	}
+
+	@Inject
+	@Optional
+	public void onPrefPaletteChanged(@Preference(value = RentalUIConstants.PREF_PALETTE) String prefId,
+			@Named(RentalUIConstants.PALETTE_MANAGER) Map<String, Palette> map, IEclipseContext context) {
+		context.set(Palette.class, map.get(prefId));
+
 		if (this.tv != null && !tv.getControl().isDisposed()) {
 			tv.refresh();
 		}

@@ -35,7 +35,7 @@
    <extension
          point="com.bonita.rental.ui.palette">
       <palette
-            id="com.bonita.rental.ui.palette1"
+            id="com.bonita.rental.ui.DefaultPalette"
             name="Default Palette"
             paletteClass="com.bonita.rental.ui.palette.DefaultPalette">
       </palette>
