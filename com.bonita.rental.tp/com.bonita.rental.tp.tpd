@@ -40,6 +40,6 @@ location "https://www.opcoach.com/repository/2021-12/" {
 }
 
 // e4 spy
-location "https://www.opcoach.com/repository/2021-12-E4Spies/" {
+//location "https://www.opcoach.com/repository/2021-12-E4Spies/" {
 	//org.eclipse.e4.tools.event.spy.feature.feature.group
-} 
+//} 
