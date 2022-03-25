@@ -9,8 +9,8 @@
             application="org.eclipse.e4.ui.workbench.swt.E4Application"
             name="com.bonita.rental.eap">
          <property
-               name="applicationCSS"
-               value="platform:/plugin/com.bonita.rental.eap/css/default.css">
+               name="appName"
+               value="com.bonita.rental.eap">
          </property>
       </product>
    </extension>

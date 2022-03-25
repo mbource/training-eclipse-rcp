@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bonita.rental</groupId>
+	<artifactId>com.bonita.rental.parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<description>Parent project for the E4 build</description>
+
+	<properties>
+		<tycho-version>2.5.0</tycho-version>
+	</properties>
+
+	<!-- A profile part to separate target platform for RAP and EAP -->
+	<profiles>
+
+		<!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
+		<profile>
+			<!-- This profile is for the E4 application running on rap -->
+			<!-- To launch it use : mvn clean install -P rap -->
+			<id>rap</id>
+			<properties>
+				<targetArtifact>com.bonita.rental.rental.rap.tp</targetArtifact>
+				<targetVersion>3.8.0-SNAPSHOT</targetVersion>
+
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<tycho.showEclipseLog>true</tycho.showEclipseLog>
+				<assembly.version>2.4</assembly.version>
+				<replacer.version>1.4.1</replacer.version>
+				<!-- <rap-repo.url>http://download.eclipse.org/rt/rap/nightly/runtime/</rap-repo.url> 
+					<rap-incubator-repo.url>http://download.eclipse.org/rt/rap/incubator/nightly/</rap-incubator-repo.url> -->
+
+			</properties>
+			<modules>
+				<module>com.bonita.rental.rental.rap.tp</module>
+				<module>com.bonita.rental.rental.rap</module>
+				<module>com.bonita.rental.rental.rap.repository</module>
+			</modules>
+		</profile>
+		<profile>
+			<!-- This profile is for the pure E4 application -->
+			<id>pureE4</id>
+			<properties>
+				<targetArtifact>com.bonita.rental.tp</targetArtifact>
+				<targetVersion>4.23.0-SNAPSHOT</targetVersion>
+			</properties>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>com.bonita.rental.tp</module>
+				<!--<module>com.bonita.rental.core</module>
+				<module>com.bonita.rental.ui</module>
+				<module>com.bonita.rental.eap</module> 
+				<module>com.bonita.rental.adapters</module> -->
+				<!--<module>com.bonita.rental.repository</module> -->
+			</modules>
+		</profile>
+	</profiles>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- enable tycho build extension -->
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<!-- <dependency-resolution> <optionalDependencies>ignore</optionalDependencies> 
+						</dependency-resolution> -->
+					<target>
+						<artifact>
+							<groupId>com.bonita.rental</groupId>
+							<artifactId>${targetArtifact}</artifactId>
+							<version>${targetVersion}</version>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<toolchains>
+						<jdk>
+							<version>11</version>
+							<vendor>openjdk</vendor>
+						</jdk>
+					</toolchains>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- the modules that should be built together -->
+	<modules>
+	<!--
+		<module>com.bonita.rental.feature</module>
+		<module>com.bonita.rental.ui</module>
+		<module>com.bonita.rental.adapters</module>
+		<module>com.bonita.rental.core</module>
+		-->
+	</modules>
+
+
+</project>
