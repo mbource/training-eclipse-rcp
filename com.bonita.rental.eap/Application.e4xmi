@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6wlLcMgZEeSyMNYR5xypkQ" elementId="com.bonita.rental.eap.application" bindingContexts="_6wlLecgZEeSyMNYR5xypkQ">
+  <tags>DisableMinMaxAddon</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_6wlLccgZEeSyMNYR5xypkQ" elementId="com.bonita.rental.eap.window.main" label="EAP Application Rental" width="1024" height="768">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_GQhQUKtjEeyLdo2RQ8A35g" elementId="com.bonita.rental.eap.perspectivestack.0" selectedElement="_GyswUKtjEeyLdo2RQ8A35g">
       <children xsi:type="advanced:Perspective" xmi:id="_GyswUKtjEeyLdo2RQ8A35g" elementId="com.bonita.rental.eap.perspective.0" selectedElement="_HyxtQKtjEeyLdo2RQ8A35g">
