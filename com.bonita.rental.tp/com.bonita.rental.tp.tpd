@@ -7,6 +7,8 @@ location "http://download.eclipse.org/releases/2022-03" {
 	org.eclipse.equinox.executable.feature.group
 	// Used for tests
 	org.eclipse.pde.junit.runtime
+	org.eclipse.pde.feature.group
+	
 	// Add the junit 5 support	
 	org.eclipse.jdt.junit5.runtime
 	org.junit.jupiter.api

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Bonita Training TP" sequenceNumber="1648214945">
+<target name="Bonita Training TP" sequenceNumber="1648215743">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.23.0.v20220308-0722"/>
       <unit id="org.eclipse.e4.rcp.feature.group" version="4.23.0.v20220308-0630"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="3.8.1500.v20220210-1108"/>
       <unit id="org.eclipse.pde.junit.runtime" version="3.6.100.v20211112-1151"/>
+      <unit id="org.eclipse.pde.feature.group" version="3.14.1100.v20220308-0310"/>
       <unit id="org.eclipse.jdt.junit5.runtime" version="1.0.1400.v20211108-0640"/>
       <unit id="org.junit.jupiter.api" version="5.8.1.v20211018-1956"/>
       <unit id="org.junit.jupiter.engine" version="5.8.1.v20211018-1956"/>
